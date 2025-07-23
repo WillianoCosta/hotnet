@@ -140,13 +140,14 @@ header {
 }
 
 header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* Garante que os itens fiquem lado a lado */
+    justify-content: space-between; /* Empurra logo para esquerda e menu para direita */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: nowrap; /* Impede quebras de linha indesejadas em desktop */
 }
 
 .logo img {
-    height: 60px; /* Ajuste conforme o tamanho do seu logo */
+    height: 50px; /* Logo menor */
     width: auto;
     border-radius: 80px;
 }
@@ -154,6 +155,7 @@ header .container {
 nav ul {
     list-style: none;
     display: flex;
+    margin-left: 0; /* Garante que não haja margem extra */
 }
 
 nav ul li {
@@ -189,7 +191,7 @@ nav ul li a:hover::after {
 
 /* Menu Toggle para mobile */
 .menu-toggle {
-    display: none;
+    display: none; /* Escondido por padrão em desktop */
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
@@ -211,8 +213,8 @@ nav ul li a:hover::after {
 
 /* Hero Section */
 .hero {
-    /* Mantenha o gradiente para legibilidade do texto */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://t2.tudocdn.net/558755?w=824&h=494') no-repeat center center/cover;
+    /* Exemplo com URL de imagem, substitua pela sua! */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1547432029-4d64024a1b02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDR8MHwxfHNlYXJjaHwyMHx8aW50ZXJuZXQlMjBjb25uZWN0aW9ufGVufDB8fHx8MTcwNDIwMjMxM3wx&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
     
     color: var(--white);
     text-align: center;
@@ -666,30 +668,42 @@ footer {
 /* Responsividade */
 @media (max-width: 992px) {
     header .container {
-        flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between; /* Logo à esquerda, toggle à direita */
+        flex-wrap: nowrap; /* Impede quebras de linha indesejadas */
     }
 
     .logo {
-        margin-bottom: 15px;
+        margin-bottom: 0; /* Remove margem inferior */
+        width: auto; /* Tamanho automático */
+    }
+    
+    nav {
+        display: none; /* Esconde o menu desktop em telas menores */
+        width: 100%; /* Ocupa a largura total quando ativo */
+        margin-top: 20px; /* Espaço para o menu expandido */
+        order: 3; /* Garante que quando ativo, apareça abaixo do logo/toggle */
+        text-align: center; /* Centraliza itens do menu mobile */
     }
 
-    nav {
-        order: 3; /* Move a navegação para baixo */
-        width: 100%;
-        text-align: center;
-        margin-top: 15px;
+    nav.active {
+        display: block; /* Mostra o menu quando a classe 'active' é adicionada (pelo JS) */
     }
 
     nav ul {
-        justify-content: center;
-        margin-left: 0;
+        flex-direction: column; /* Itens do menu em coluna para mobile */
+        align-items: center; /* Centraliza itens do menu em mobile */
     }
 
     nav ul li {
-        margin: 0 15px;
+        margin: 15px 0; /* Espaçamento vertical entre itens do menu em mobile */
     }
 
+    .menu-toggle {
+        display: flex; /* Mostra o botão de toggle em mobile */
+        order: 2; /* Fica depois do logo, na mesma linha */
+    }
+
+    /* Outros ajustes de responsividade que já existiam */
     .about-content {
         flex-direction: column;
         text-align: center;
@@ -760,44 +774,6 @@ footer {
     .hero p {
         font-size: 1.2em;
     }
-
-    /* Mobile Navigation */
-    nav {
-        display: none; /* Esconde o menu por padrão */
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    nav.active {
-        display: block; /* Mostra o menu quando ativo */
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 15px 0;
-    }
-
-    .menu-toggle {
-        display: flex; /* Mostra o botão de toggle */
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-
-/* Mantenha o restante do seu CSS inalterado */
 }
 
 @media (max-width: 480px) {
