@@ -214,7 +214,7 @@ nav ul li a:hover::after {
 /* Hero Section */
 .hero {
     /* Exemplo com URL de imagem, substitua pela sua! */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1547432029-4d64024a1b02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDR8MHwxfHNlYXJjaHwyMHx8aW50ZXJuZXQlMjBjb25uZWN0aW9ufGVufDB8fHx8MTcwNDIwMjMxM3wx&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpeg') no-repeat center center/cover;
     
     color: var(--white);
     text-align: center;
